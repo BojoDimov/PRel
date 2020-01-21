@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2020 Bozhidar Dimov
+ * 
+ * This software is released under the MIT License.
+ * https://opensource.org/licenses/MIT
+ */
+
+
 const child_process = require('child_process');
 const services = require("./configurations.json").services;
 

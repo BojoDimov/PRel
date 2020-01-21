@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2020 Bozhidar Dimov
+ * 
+ * This software is released under the MIT License.
+ * https://opensource.org/licenses/MIT
+ */
+
 import { IServiceLoader } from "./interfaces/service-loader.interface";
 import { IServiceStarter } from "./interfaces/service-starter.interface";
 import { IServiceMonitor } from "./interfaces/service-monitor.interface";

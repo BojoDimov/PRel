@@ -1,0 +1,21 @@
+{
+  "name": "prel",
+  "description": "Process Reliability manager",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BojoDimov/PRel.git"
+  },
+  "keywords": [
+    "process",
+    "manager"
+  ],
+  "author": "Bozhidar Dimov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BojoDimov/PRel/issues"
+  },
+  "homepage": "https://github.com/BojoDimov/PRel#readme",
+  "devDependencies": {
+    "@types/node": "^13.1.8"
+  }
+}

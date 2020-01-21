@@ -2,5 +2,6 @@
   "licenser.author": "Bozhidar Dimov",
   "licenser.license": "MIT",
   "licenser.projectName": "PRel",
-  "licenser.useSingleLineStyle": false
+  "licenser.useSingleLineStyle": false,
+  "licenser.disableAutoHeaderInsertion": true
 }

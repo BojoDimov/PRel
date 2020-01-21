@@ -20,3 +20,8 @@ export class RestartServiceMaintainer implements IServiceMaintainer {
     });
   }
 }
+
+export class NoMaintenanceServiceMaintainer implements IServiceMaintainer {
+  maintain(service: Service, node: ServiceNode, pm: ProcessManager): void {
+  }
+}

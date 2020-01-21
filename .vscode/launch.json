@@ -7,14 +7,14 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Backend",
+      "name": "Launch lib",
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}\\backend\\main.ts",
-      "preLaunchTask": "tsc: build - tsconfig.json",
+      "program": "${workspaceFolder}\\lib\\main.ts",
+      "preLaunchTask": "lib-build",
       "outFiles": [
-        "${workspaceFolder}\\build\\backend\\**\\*.js"
+        "${workspaceFolder}\\lib\\build\\**\\*.js"
       ]
     }
   ]

@@ -5,7 +5,7 @@
  * https://opensource.org/licenses/MIT
  */
 
-import * as config from '../services.json';
+import * as config from '../../services.json';
 
 import { IServiceLoader } from "./service-loader.interface";
 import { Service } from "../models/service";

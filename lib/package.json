@@ -1,0 +1,11 @@
+{
+  "name": "prel-lib",
+  "version": "1.0.0",
+  "description": "PRel lib is a process managing and monitoring library",
+  "main": "main.ts",
+  "author": "Bozhidar Dimov",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^13.1.8"
+  }
+}

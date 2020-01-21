@@ -4,12 +4,12 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "lib-build",
       "type": "typescript",
-      "tsconfig": "tsconfig.json",
+      "tsconfig": "lib/tsconfig.json",
       "problemMatcher": [
         "$tsc"
-      ],
-      "group": "build"
+      ]
     }
   ]
 }

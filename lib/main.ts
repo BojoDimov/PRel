@@ -21,3 +21,5 @@ const manager = new ProcessManager(
 );
 
 manager.init();
+
+module.exports = manager;

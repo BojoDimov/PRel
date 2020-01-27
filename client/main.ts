@@ -1,8 +1,12 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
 const url = require("url");
-
+const pm = require('../lib/build/main');
 let win;
+
+function pollProcessManager() {
+  console.log(pm.services);
+}
 
 function createWindow() {
   win = new BrowserWindow({ width: 800, height: 600 });
@@ -39,3 +43,5 @@ app.on("activate", () => {
     createWindow();
   }
 });
+
+setInterval(pollProcessManager, 5 * 1000);

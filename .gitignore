@@ -4,3 +4,4 @@ ExampleServices/ProcessSignals/ProcessSignals/x64
 ExampleServices/ProcessSignals/x64
 build/
 node_modules/
+client/main.js

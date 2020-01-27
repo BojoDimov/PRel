@@ -9,7 +9,7 @@ function pollProcessManager() {
 }
 
 function createWindow() {
-  win = new BrowserWindow({ width: 800, height: 600 });
+  win = new BrowserWindow({ width: 1000, height: 800, webPreferences: { nodeIntegration: true } });
 
   // load the dist folder from Angular
   win.loadURL(
@@ -20,8 +20,13 @@ function createWindow() {
     })
   );
 
+  win.webContents.on("did-finish-load", () => {
+    win.webContents.send("data", pm.services);
+    setInterval(() => win.webContents.send("data", pm.services), 5 * 1000);
+  });
+
   // The following is optional and will open the DevTools:
-  // win.webContents.openDevTools()
+  win.webContents.openDevTools()
 
   win.on("closed", () => {
     win = null;

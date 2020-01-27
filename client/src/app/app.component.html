@@ -7,7 +7,10 @@
   </div>
 
   <div id="sidebar">
-
+    <pre>{{services}}</pre>
+    <div *ngFor="let service of services">
+      {{service.name}}
+    </div>
   </div>
 
   <div id="content">

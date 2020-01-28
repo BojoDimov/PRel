@@ -12,6 +12,7 @@ import { IServiceMaintainer } from "./service-maintainer/service-maintainer.inte
 import { IServicePerformanceMeasurer } from "./service-performance-measurer/service-performance-measurer.interface";
 import { Service } from "./models/service";
 import { range } from "./utils/range";
+import { IServiceLogger } from "./service-logger/service-logger.interface";
 
 export class ProcessManager {
   constructor(
@@ -19,10 +20,15 @@ export class ProcessManager {
     public serviceStarter: IServiceStarter,
     public serviceMonitor: IServiceMonitor,
     public serviceMaintainer: IServiceMaintainer,
-    public servicePerformanceMeasurer: IServicePerformanceMeasurer
-  ) { }
+    public servicePerformanceMeasurer: IServicePerformanceMeasurer,
+    public serviceLogger: IServiceLogger
+  ) {
+    this.logInterval = setInterval(() => this.serviceLogger.logServices(this), 60 * 1000);
+    process.on("beforeExit", () => this.destroy());
+  }
 
   services: { [id: string]: Service } = {};
+  logInterval: NodeJS.Timeout;
 
   init() {
     this.serviceLoader.load().forEach(service => {
@@ -37,5 +43,9 @@ export class ProcessManager {
         })
       };
     });
+  }
+
+  destroy() {
+    clearInterval(this.logInterval);
   }
 }

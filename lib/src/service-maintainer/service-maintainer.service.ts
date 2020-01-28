@@ -12,7 +12,7 @@ import { ProcessManager } from "../process-manager.service";
 
 export class RestartServiceMaintainer implements IServiceMaintainer {
   maintain(service: Service, node: ServiceNode, pm: ProcessManager): void {
-    node.process.on("exit", _ => {
+    node.process?.on("exit", _ => {
       node.process = pm.serviceStarter.start(service, node.id).process;
       pm.serviceMonitor.monitor(service, node);
       pm.serviceMaintainer.maintain(service, node, pm);

@@ -11,13 +11,15 @@ import { SpawnServiceStarter } from "./src/service-starter/service-starter.servi
 import { VerboseServiceMonitor } from "./src/service-monitor/service-monitor.service";
 import { RestartServiceMaintainer, NoMaintenanceServiceMaintainer } from "./src/service-maintainer/service-maintainer.service";
 import { PidUsagePerformanceMeasurer } from "./src/service-performance-measurer/service-performance-measurer.service";
+import { DumpServiceLogger } from "./src/service-logger/dump-services-logger.service";
 
 const manager = new ProcessManager(
   new StaticConfigServiceLoader(),
   new SpawnServiceStarter(),
   new VerboseServiceMonitor(),
   new NoMaintenanceServiceMaintainer(),
-  new PidUsagePerformanceMeasurer()
+  new PidUsagePerformanceMeasurer(),
+  new DumpServiceLogger("C:\\Projects3\\PRel\\logs")
 );
 
 manager.init();

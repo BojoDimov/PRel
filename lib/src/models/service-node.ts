@@ -11,7 +11,7 @@ import { ServicePerformance } from "./service-performance";
 
 export class ServiceNode {
   id: number;
-  process: ChildProcess;
+  process?: ChildProcess;
   logs: ServiceLog[];
   performance: ServicePerformance[];
 }

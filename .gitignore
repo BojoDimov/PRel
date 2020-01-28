@@ -5,3 +5,5 @@ ExampleServices/ProcessSignals/x64
 build/
 node_modules/
 client/main.js
+logs/
+lib/services.json

@@ -1,12 +1,109 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Montserrat:100|Roboto+Mono:100i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100, 900|Roboto+Mono:100i&display=swap');
+
+@import 'mixins';
+
+$primary: #0e9fe2;
+$secondary: #64ffea;
+$background: #000b13;
 
 body {
+  @include scrollbars(3px, $secondary, $background);
+
   font-family: "Roboto Mono", sans-serif;
-  background: #000b13;
-  color: #0e9fe2;
+  background: $background;
+  color: $primary;
 }
 
-#main {
-  
+h1, h2, h4 {
+  margin: 0;
+  color: $primary;
+}
+
+.info-label {
+  color: $primary;
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.title {
+  font-family: "Roboto Mono", sans-serif;
+  font-size: 16px;
+
+  &.primary {
+    color: $primary;
+    font-weight: bold;
+  }
+}
+
+#headline {
+  @extend .block;
+}
+
+.block {
+  margin: 16px;
+}
+
+.ui-block {
+  padding: 16px;
+  margin: 16px;
+  border: 1px solid $secondary;
+}
+
+#sidebar {
+  @extend .ui-block;
+  font-family: "Montserrat";
+  color:$secondary;
+}
+
+.btn {
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-family: "Montserrat";
+  font-weight: 900;
+  font-size: 14px;
+
+  &:hover {
+    opacity: .9;
+  }
+
+  &.secondary {
+    background-color: $secondary; 
+    color: darken($primary, 20%);
+  }
+}
+
+#navigation {
+  @extend .block;
+  display: flex;
+  margin-left: 8px;
+  // margin: 16px 0px 16px -8px;
+
+  & > div {
+    margin-left: 8px;
+    margin-top: 8px;   
+  }
+}
+
+#service-actions {
+  display: flex;
+  margin-left: -8px;
+  & > div {
+    margin-left: 8px;
+    margin-top: 8px;   
+  }
+}
+
+#service-info {
+  @extend .ui-block;
+  font-family: "Montserrat";
+  color:$secondary;
+}
+
+#node-info {
+  @extend .ui-block;
+  font-family: "Montserrat";
+  color:$secondary;
 }

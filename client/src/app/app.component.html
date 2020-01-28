@@ -1,19 +1,101 @@
 <div id="main">
   <div id="headline">
     <h1>Welcome to PRel</h1>
-    <h4>
-      A process management and reliability service for the non-containerized workflows
-    </h4>
   </div>
 
+  <nav id="navigation">
+    <div class="btn secondary">
+      Start all
+    </div>
+    <div class="btn secondary">
+      Add service
+    </div>
+    <div class="btn secondary">
+      Open logs
+    </div>
+  </nav>
+
   <div id="sidebar">
-    <pre>{{services}}</pre>
-    <div *ngFor="let service of services">
-      {{service.name}}
+    <h2>Services</h2>
+    <div *ngFor="let service of services"
+         style="cursor: pointer;"
+         (click)="selectService(service)">
+      {{service.name}} ({{service.nodes.length}})
     </div>
   </div>
 
   <div id="content">
+    <div id="service-info"
+         *ngIf="selectedService">
 
+      <h2>{{selectedService.name}}</h2>
+
+      <div id="service-actions">
+        <div class="btn secondary">Stop all nodes</div>
+        <div class="btn secondary">Start new node</div>
+      </div>
+
+      <div style="margin-top: 8px;">
+        <div>
+          <span class="info-label">Path:</span>
+          {{selectedService.path}}
+        </div>
+        <div>
+          <span class="info-label">Args:</span>
+          {{selectedService.args}}
+        </div>
+        <div>
+          <span class="info-label">Instances:</span>
+          {{selectedService.instances}}
+        </div>
+        <div>
+          <span class="info-label">Configured instances:</span>
+          {{selectedService.nodes?.length}}
+        </div>
+        <div>
+          <span class="info-label">Use shell:</span>
+          {{selectedService.shell}}
+        </div>
+      </div>
+
+      <div style="margin-top: 8px;">
+        <h4>Nodes</h4>
+        <div *ngFor="let node of selectedService.nodes"
+             style="cursor: pointer;"
+             (click)="selectNode(node)">
+          {{selectedService.name}}-node-{{node.id}}
+        </div>
+      </div>
+    </div>
+
+    <div id="node-info"
+         *ngIf="selectedNode">
+      <h2>{{selectedService.name}}-node-{{selectedNode.id}}</h2>
+
+      <div id="service-actions">
+        <div class="btn secondary">Stop node</div>
+        <div class="btn secondary">Start node</div>
+      </div>
+
+      <div style="margin-top: 8px;">
+        <h4>Logs</h4>
+        <div *ngFor="let log of selectedNode.logs"
+             style="margin-top: 8px;">
+          <div>
+            {{ServiceLogType[log.type]}} | {{log.timestamp}}
+          </div>
+          <div>
+            {{log.message}}
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 8px;">
+        <h4>Performance</h4>
+        <div *ngFor="let performance of selectedNode.performance"
+             style="margin-top: 8px;">
+        </div>
+      </div>
+    </div>
   </div>
 </div>

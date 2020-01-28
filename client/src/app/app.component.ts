@@ -2,6 +2,16 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { Service } from '../../../lib/src/models/service';
 import { ElectronService } from 'ngx-electron';
 import { DataMockService } from 'src/services/data-mock.service';
+import { ServiceNode } from '../../../lib/src/models/service-node';
+
+enum ServiceLogType {
+  start = 1,
+  exit = 2,
+  restart = 3,
+  error = 4,
+  stdout = 5,
+  stderr = 6
+}
 
 @Component({
   selector: 'app-root',
@@ -10,6 +20,10 @@ import { DataMockService } from 'src/services/data-mock.service';
 })
 export class AppComponent {
   services: Service[] = [];
+
+  selectedService: Service = null;
+  selectedNode: ServiceNode = null;
+  ServiceLogType = ServiceLogType;
 
   constructor(
     private electron: ElectronService,
@@ -35,5 +49,16 @@ export class AppComponent {
     Object.keys(data).forEach(key => {
       this.services.push(data[key]);
     });
+  }
+
+  selectService(service: Service) {
+    this.selectedService = service;
+    this.selectedNode = null;
+    this.changeDetector.detectChanges();
+  }
+
+  selectNode(node: ServiceNode) {
+    this.selectedNode = node;
+    this.changeDetector.detectChanges();
   }
 }

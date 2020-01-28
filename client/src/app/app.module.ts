@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { NgxElectronModule } from 'ngx-electron';
+import { DataMockService } from 'src/services/data-mock.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import { NgxElectronModule } from 'ngx-electron';
     NgxElectronModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    DataMockService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

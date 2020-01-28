@@ -4,23 +4,27 @@
   </div>
 
   <nav id="navigation">
-    <div class="btn secondary">
+    <div class="btn secondary"
+         (click)="callProcessManager(CommunicationChannel.startAll, {})">
       Start all
     </div>
-    <div class="btn secondary">
+    <div class="btn secondary"
+         (click)="callProcessManager(CommunicationChannel.addService, null)">
       Add service
     </div>
-    <div class="btn secondary">
+    <div class="btn secondary"
+         (click)="callProcessManager(CommunicationChannel.openLogs, null)">
       Open logs
     </div>
   </nav>
 
   <div id="sidebar">
     <h2>Services</h2>
-    <div *ngFor="let service of services"
-         style="cursor: pointer;"
-         (click)="selectService(service)">
-      {{service.name}} ({{service.nodes.length}})
+    <div *ngFor="let service of services">
+      <span style="cursor: pointer;"
+            (click)="selectService(service)">
+        {{service.name}} ({{service.nodes.length}})
+      </span>
     </div>
   </div>
 
@@ -31,8 +35,14 @@
       <h2>{{selectedService.name}}</h2>
 
       <div id="service-actions">
-        <div class="btn secondary">Stop all nodes</div>
-        <div class="btn secondary">Start new node</div>
+        <div class="btn secondary"
+             (click)="callProcessManager(CommunicationChannel.serviceStopAllNodes, null)">
+          Stop all nodes
+        </div>
+        <div class="btn secondary"
+             (click)="callProcessManager(CommunicationChannel.serviceStartNewNode, service)">
+          Start new node
+        </div>
       </div>
 
       <div style="margin-top: 8px;">
@@ -60,10 +70,11 @@
 
       <div style="margin-top: 8px;">
         <h4>Nodes</h4>
-        <div *ngFor="let node of selectedService.nodes"
-             style="cursor: pointer;"
-             (click)="selectNode(node)">
-          {{selectedService.name}}-node-{{node.id}}
+        <div *ngFor="let node of selectedService.nodes">
+          <span style="cursor: pointer;"
+                (click)="selectNode(node)">
+            {{selectedService.name}}-node-{{node.id}}
+          </span>
         </div>
       </div>
     </div>
@@ -73,8 +84,14 @@
       <h2>{{selectedService.name}}-node-{{selectedNode.id}}</h2>
 
       <div id="service-actions">
-        <div class="btn secondary">Stop node</div>
-        <div class="btn secondary">Start node</div>
+        <div class="btn secondary"
+             (click)="callProcessManager(CommunicationChannel.serviceStopNode, selectedNode)">
+          Stop node
+        </div>
+        <div class="btn secondary"
+             (click)="callProcessManager(CommunicationChannel.serviceStartNode, selectedNode)">
+          Start node
+        </div>
       </div>
 
       <div style="margin-top: 8px;">

@@ -1,11 +1,17 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const url = require("url");
 const pm = require('../lib/build/main');
 let win;
 
-function pollProcessManager() {
-  console.log(pm.services);
+enum CommunicationChannel {
+  startAll = "start-all",
+  addService = "add-service",
+  openLogs = "open-logs",
+  serviceStopAllNodes = "service-stop-all-nodes",
+  serviceStartNewNode = "service-start-new-node",
+  serviceStartNode = "service-start-node",
+  serviceStopNode = "service-stop-node"
 }
 
 function createWindow() {
@@ -24,6 +30,12 @@ function createWindow() {
     win.webContents.send("data", pm.services);
     setInterval(() => win.webContents.send("data", pm.services), 5 * 1000);
   });
+
+  ipcMain.on(CommunicationChannel.startAll, (data) => console.log("Caught event", CommunicationChannel.startAll, data));
+
+  ipcMain.on(CommunicationChannel.addService, (data) => console.log("Caught event", CommunicationChannel.addService, data));
+
+  ipcMain.on(CommunicationChannel.openLogs, (data) => console.log("Caught event", CommunicationChannel.openLogs, data));
 
   // The following is optional and will open the DevTools:
   win.webContents.openDevTools()
@@ -48,5 +60,3 @@ app.on("activate", () => {
     createWindow();
   }
 });
-
-setInterval(pollProcessManager, 5 * 1000);

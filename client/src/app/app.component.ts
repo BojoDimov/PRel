@@ -13,6 +13,16 @@ enum ServiceLogType {
   stderr = 6
 }
 
+export enum CommunicationChannel {
+  startAll = "start-all",
+  addService = "add-service",
+  openLogs = "open-logs",
+  serviceStopAllNodes = "service-stop-all-nodes",
+  serviceStartNewNode = "service-start-new-node",
+  serviceStartNode = "service-start-node",
+  serviceStopNode = "service-stop-node"
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -24,6 +34,7 @@ export class AppComponent {
   selectedService: Service = null;
   selectedNode: ServiceNode = null;
   ServiceLogType = ServiceLogType;
+  CommunicationChannel = CommunicationChannel;
 
   constructor(
     private electron: ElectronService,
@@ -32,11 +43,8 @@ export class AppComponent {
   ) {
     if (this.electron.isElectronApp) {
       electron.ipcRenderer.on("data", (event, data) => {
-        console.log('Caught event', event);
-        console.log('Data: ', data);
         this.transformData(data);
         this.changeDetector.detectChanges();
-        console.log(this.services);
       });
     }
     else {
@@ -60,5 +68,10 @@ export class AppComponent {
   selectNode(node: ServiceNode) {
     this.selectedNode = node;
     this.changeDetector.detectChanges();
+  }
+
+  callProcessManager(channel: CommunicationChannel, options: any) {
+    if (this.electron.isElectronApp)
+      this.electron.ipcRenderer.send(channel, options);
   }
 }

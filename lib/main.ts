@@ -6,22 +6,43 @@
  */
 
 import { ProcessManager } from "./src/process-manager.service";
-import { StaticConfigServiceLoader } from "./src/service-loader/static-config-service-loader.service";
+import { DynamicFileServiceLoader } from "./src/service-loader/static-config-service-loader.service";
 import { SpawnServiceStarter } from "./src/service-starter/service-starter.service";
 import { VerboseServiceMonitor } from "./src/service-monitor/service-monitor.service";
-import { RestartServiceMaintainer, NoMaintenanceServiceMaintainer } from "./src/service-maintainer/service-maintainer.service";
+import { RestartServiceMaintainer } from "./src/service-maintainer/service-maintainer.service";
 import { PidUsagePerformanceMeasurer } from "./src/service-performance-measurer/service-performance-measurer.service";
 import { DumpServiceLogger } from "./src/service-logger/dump-services-logger.service";
 
-const manager = new ProcessManager(
-  new StaticConfigServiceLoader(),
-  new SpawnServiceStarter(),
-  new VerboseServiceMonitor(),
-  new NoMaintenanceServiceMaintainer(),
-  new PidUsagePerformanceMeasurer(),
-  new DumpServiceLogger("C:\\Projects3\\PRel\\logs")
-);
+let manager;
 
-manager.init();
+// let config = {
+//   servicesConfigPath: "C:\\Projects\\PRel\\lib\\services.json",
+//   logDirectoryPath: "C:\\Projects\\PRel\\logs"
+// }
 
-module.exports = manager;
+// let manager = new ProcessManager(
+//   new DynamicFileServiceLoader(config.servicesConfigPath),
+//   new SpawnServiceStarter(),
+//   new VerboseServiceMonitor(),
+//   new RestartServiceMaintainer(),
+//   new PidUsagePerformanceMeasurer(),
+//   new DumpServiceLogger(config.logDirectoryPath)
+// );
+
+// manager.init();
+// manager.startAll();
+
+module.exports = {
+  create: (config: { servicesConfigPath: string, logDirectoryPath: string }) => {
+    manager = new ProcessManager(
+      new DynamicFileServiceLoader(config.servicesConfigPath),
+      new SpawnServiceStarter(),
+      new VerboseServiceMonitor(),
+      new RestartServiceMaintainer(),
+      new PidUsagePerformanceMeasurer(),
+      new DumpServiceLogger(config.logDirectoryPath)
+    );
+
+    return manager;
+  }
+}

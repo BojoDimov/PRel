@@ -7,5 +7,9 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^13.1.8"
+  },
+  "dependencies": {
+    "@types/pidusage": "^2.0.1",
+    "pidusage": "^2.0.17"
   }
 }

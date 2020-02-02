@@ -14,6 +14,14 @@ enum CommunicationChannel {
   serviceStopNode = "service-stop-node"
 }
 
+function formatData(services: any) {
+  let result = [];
+  Object.keys(services).forEach(key => {
+    result.push(services[key]);
+  });
+  return result;
+}
+
 function createWindow() {
   win = new BrowserWindow({ width: 1000, height: 800, webPreferences: { nodeIntegration: true } });
 
@@ -27,8 +35,8 @@ function createWindow() {
   );
 
   win.webContents.on("did-finish-load", () => {
-    win.webContents.send("data", pm.services);
-    setInterval(() => win.webContents.send("data", pm.services), 5 * 1000);
+    win.webContents.send("data", formatData(pm.services));
+    setInterval(() => win.webContents.send("data", formatData(pm.services)), 5 * 1000);
   });
 
   ipcMain.on(CommunicationChannel.startAll, (data) => console.log("Caught event", CommunicationChannel.startAll, data));

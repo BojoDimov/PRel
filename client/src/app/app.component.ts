@@ -43,7 +43,8 @@ export class AppComponent {
   ) {
     if (this.electron.isElectronApp) {
       electron.ipcRenderer.on("data", (event, data) => {
-        this.transformData(data);
+        this.services = data;
+        console.log(this.services);
         this.changeDetector.detectChanges();
       });
     }

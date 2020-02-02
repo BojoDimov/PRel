@@ -5,8 +5,8 @@
  * https://opensource.org/licenses/MIT
  */
 
-import { Service } from "../models/service";
+import { ServiceRuntime } from "../models/service";
 
 export interface IServiceLoader {
-  load(): Service[];
+  load(): ServiceRuntime[];
 }

@@ -7,11 +7,16 @@
 
 import { ServiceNode } from "./service-node";
 
-export class Service {
+export class ServiceConfiguration {
   name: string;
   path: string;
   shell: boolean = false;
   args: string[] = [];
   instances: number = 1;
-  nodes?: ServiceNode[] = [];
+  autoRestart: boolean = false;
+}
+
+export class ServiceRuntime extends ServiceConfiguration {
+  isRunning: boolean = false;
+  nodes: ServiceNode[] = [];
 }

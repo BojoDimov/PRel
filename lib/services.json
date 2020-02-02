@@ -1,3 +1,26 @@
-{
-  "services": []
-}
+[
+  {
+    "name": "Spotify",
+    "path": "C:\\Users\\Bojo\\AppData\\Roaming\\Spotify\\Spotify.exe",
+    "args": [],
+    "shell": false,
+    "instances": 1,
+    "process": null
+  },
+  {
+    "name": "Slack",
+    "path": "C:\\Users\\Bojo\\AppData\\Local\\slack\\Slack.exe",
+    "args": [],
+    "shell": false,
+    "instances": 1,
+    "process": null
+  },
+  {
+    "name": "VS Code",
+    "path": "C:\\Users\\Bojo\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+    "args": [],
+    "shell": false,
+    "instances": 3,
+    "process": null
+  }
+]

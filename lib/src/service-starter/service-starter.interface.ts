@@ -5,9 +5,9 @@
  * https://opensource.org/licenses/MIT
  */
 
-import { Service } from "../models/service";
+import { ServiceRuntime } from "../models/service";
 import { ServiceNode } from "../models/service-node";
 
 export interface IServiceStarter {
-  start(service: Service, node: number): ServiceNode;
+  start(service: ServiceRuntime, node: number): ServiceNode;
 }

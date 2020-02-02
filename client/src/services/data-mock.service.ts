@@ -12,6 +12,7 @@ export class DataMockService {
         "nodes": [
           {
             "id": 0,
+            process: null,
             "logs": [
               {
                 "message": "PM: service Spotify-node-0 started with pid 7880",
@@ -37,6 +38,7 @@ export class DataMockService {
         "nodes": [
           {
             "id": 0,
+            process: null,
             "logs": [
               {
                 "message": "PM: service Slack-node-0 started with pid 5072",
@@ -67,6 +69,7 @@ export class DataMockService {
         "nodes": [
           {
             "id": 0,
+            process: null,
             "logs": [
               {
                 "message": "PM: service VS Code-node-0 started with pid 7852",
@@ -88,6 +91,7 @@ export class DataMockService {
           },
           {
             "id": 1,
+            process: null,
             "logs": [
               {
                 "message": "PM: service VS Code-node-1 started with pid 14240",
@@ -109,6 +113,7 @@ export class DataMockService {
           },
           {
             "id": 2,
+            process: null,
             "logs": [
               {
                 "message": "PM: service VS Code-node-2 started with pid 6340",

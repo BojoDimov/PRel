@@ -5,9 +5,9 @@
  * https://opensource.org/licenses/MIT
  */
 
-import { Service } from "../models/service";
+import { ServiceRuntime } from "../models/service";
 import { ServiceNode } from "../models/service-node";
 
 export interface IServiceMonitor {
-  monitor(service: Service, node: ServiceNode): void;
+  monitor(service: ServiceRuntime, node: ServiceNode): void;
 }

@@ -5,9 +5,13 @@
  * https://opensource.org/licenses/MIT
  */
 
-import { Service } from "../models/service";
+import { ServiceRuntime } from "../models/service";
 import { ServiceNode } from "../models/service-node";
 
-export interface IServicePerformanceMeasurer {
-  measurePerformance(service: Service, node: ServiceNode): void;
+export interface IDestroyable {
+  destroy(): void;
+}
+
+export interface IServicePerformanceMeasurer extends IDestroyable {
+  measurePerformance(service: ServiceRuntime, node: ServiceNode): void;
 }

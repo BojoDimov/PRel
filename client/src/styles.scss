@@ -104,13 +104,10 @@ body.theme-2 {
     font-weight: 900;
     font-size: 14px;
     box-shadow:  3px 3px 9px #c2c3be, 
-             -3px -3px 9px #fffffc;
+             -3px -3px 9px #fffffc; 
+            //  inset 3px 3px 5px #c2c3be, 
+            //  inset -3px -3px 5px #fffffc;
     transition: box-shadow .1s ease-in;
-
-   &:hover {
-    box-shadow:  5px 5px 12px #c2c3be, 
-    -5px -5px 12px #fffffc;
-   }
   }
 
   #sidebar {

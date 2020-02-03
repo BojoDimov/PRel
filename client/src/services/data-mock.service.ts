@@ -1,7 +1,7 @@
-import { Service } from '../../../lib/src/models/service';
+import { ServiceRuntime } from '../../../lib/src/models/service';
 
 export class DataMockService {
-  get(): Service[] {
+  get(): ServiceRuntime[] {
     return [
       {
         "name": "Spotify",
@@ -9,6 +9,8 @@ export class DataMockService {
         "args": [],
         "shell": false,
         "instances": 1,
+        isRunning: false,
+        autoRestart: false,
         "nodes": [
           {
             "id": 0,
@@ -35,6 +37,8 @@ export class DataMockService {
         "args": [],
         "shell": false,
         "instances": 1,
+        isRunning: false,
+        autoRestart: false,
         "nodes": [
           {
             "id": 0,
@@ -66,6 +70,8 @@ export class DataMockService {
         "args": [],
         "shell": false,
         "instances": 3,
+        isRunning: false,
+        autoRestart: false,
         "nodes": [
           {
             "id": 0,

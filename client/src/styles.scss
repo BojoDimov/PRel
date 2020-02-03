@@ -3,107 +3,183 @@
 
 @import 'mixins';
 
-$primary: #0e9fe2;
-$secondary: #64ffea;
-$background: #000b13;
-
 body {
-  @include scrollbars(3px, $secondary, $background);
-
   font-family: "Roboto Mono", sans-serif;
-  background: $background;
-  color: $primary;
-}
 
-h1, h2, h4 {
-  margin: 0;
-  color: $primary;
-}
+  h1, h2, h4 {
+    margin: 0;
+  }
 
-.info-label {
-  color: $primary;
-  margin-right: 8px;
-  font-weight: bold;
-}
-
-.title {
-  font-family: "Roboto Mono", sans-serif;
-  font-size: 16px;
-
-  &.primary {
-    color: $primary;
+  .info-label {
+    margin-right: 8px;
     font-weight: bold;
   }
-}
-
-#headline {
-  @extend .block;
-}
-
-.block {
-  margin: 16px;
-}
-
-.ui-block {
-  padding: 16px;
-  margin: 16px;
-  border: 1px solid $secondary;
-}
-
-#sidebar {
-  @extend .ui-block;
-  font-family: "Montserrat";
-  color:$secondary;
-}
-
-.btn {
-  cursor: pointer;
-  border: 1px solid transparent;
-  padding: 4px 8px;
-  border-radius: 5px;
-  font-family: "Montserrat";
-  font-weight: 900;
-  font-size: 14px;
-
-  &:hover {
-    opacity: .9;
+  
+  .block {
+    margin: 16px;
   }
 
-  &.secondary {
-    background-color: $secondary; 
-    color: darken($primary, 20%);
+  .ui-block {
+    padding: 16px;
+    margin: 16px;
   }
-}
 
-#navigation {
-  @extend .block;
-  display: flex;
-  margin-left: 8px;
-  // margin: 16px 0px 16px -8px;
+  .btn {
+    cursor: pointer;
+    padding: 4px 8px;
+  }
 
-  & > div {
+  #headline {
+    @extend .block;
+  }
+
+  #sidebar {
+    @extend .ui-block;
+    font-family: "Montserrat";
+  }
+
+  #navigation {
+    @extend .block;
+    display: flex;
     margin-left: 8px;
-    margin-top: 8px;   
+  
+    & > div {
+      margin-left: 8px;
+      margin-top: 8px;   
+    }
+  }
+  
+  #service-actions {
+    display: flex;
+    margin-left: -8px;
+    & > div {
+      margin-left: 8px;
+      margin-top: 8px;   
+    }
+  }
+
+  #service-info {
+    @extend .ui-block;
+    font-family: "Montserrat";
+  }
+  
+  #node-info {
+    @extend .ui-block;
+    font-family: "Montserrat";
   }
 }
 
-#service-actions {
-  display: flex;
-  margin-left: -8px;
-  & > div {
-    margin-left: 8px;
-    margin-top: 8px;   
+body.theme-2 {
+  $primary: #262625;
+  $secondary: #262625;
+  $background: #e1e3dd;
+
+  @include scrollbars(3px, $secondary, $background);
+
+  background: $background;
+  color: $primary;
+
+  h1, h2, h4 {
+    color: $primary;
+    // padding: 5px 8px;
+    // margin: 16px 0px;
+    // border-radius: 10px;
+    // box-shadow: inset 6px 6px 15px #c2c3be , 
+    //          inset -6px -6px 15px #fffffc;
+  }
+
+  .info-label {
+    color: $primary;
+  }
+
+  .ui-block {
+    border-radius: 10px;
+    box-shadow:  6px 6px 15px #c2c3be, 
+             -6px -6px 15px #fffffc;
+  }
+
+  .btn {
+    border-radius: 5px;
+    font-family: "Montserrat";
+    font-weight: 900;
+    font-size: 14px;
+    box-shadow:  3px 3px 9px #c2c3be, 
+             -3px -3px 9px #fffffc;
+    transition: box-shadow .1s ease-in;
+
+   &:hover {
+    box-shadow:  5px 5px 12px #c2c3be, 
+    -5px -5px 12px #fffffc;
+   }
+  }
+
+  #sidebar {
+    color:$secondary;
+  }
+
+  #service-info {
+    color:$secondary;
+  }
+  
+  #node-info {
+    color:$secondary;
   }
 }
 
-#service-info {
-  @extend .ui-block;
-  font-family: "Montserrat";
-  color:$secondary;
-}
+body.theme-1 {
+  $primary: #0e9fe2;
+  $secondary: #64ffea;
+  $background: #000b13;
 
-#node-info {
-  @extend .ui-block;
-  font-family: "Montserrat";
-  color:$secondary;
+  @include scrollbars(3px, $secondary, $background);
+
+  background: $background;
+  color: $primary;
+
+  h1, h2, h4 {
+    color: $primary;
+  }
+
+  .info-label {
+    color: $primary;
+  }
+
+  .title {
+    &.primary {
+      color: $primary;
+    }
+  }
+
+  .ui-block {
+    border: 1px solid $secondary;
+  }
+
+  .btn {
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-family: "Montserrat";
+    font-weight: 900;
+    font-size: 14px;
+  
+    &:hover {
+      opacity: .9;
+    }
+  
+    &.secondary {
+      background-color: $secondary; 
+      color: darken($primary, 20%);
+    }
+  }
+
+  #sidebar {
+    color:$secondary;
+  }
+
+  #service-info {
+    color:$secondary;
+  }
+  
+  #node-info {
+    color:$secondary;
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { Service } from '../../../lib/src/models/service';
+import { ServiceRuntime } from '../../../lib/src/models/service';
 import { ElectronService } from 'ngx-electron';
 import { DataMockService } from 'src/services/data-mock.service';
 import { ServiceNode } from '../../../lib/src/models/service-node';
@@ -29,9 +29,9 @@ export enum CommunicationChannel {
   styles: []
 })
 export class AppComponent {
-  services: Service[] = [];
+  services: ServiceRuntime[] = [];
 
-  selectedService: Service = null;
+  selectedService: ServiceRuntime = null;
   selectedNode: ServiceNode = null;
   ServiceLogType = ServiceLogType;
   CommunicationChannel = CommunicationChannel;
@@ -60,7 +60,7 @@ export class AppComponent {
     });
   }
 
-  selectService(service: Service) {
+  selectService(service: ServiceRuntime) {
     this.selectedService = service;
     this.selectedNode = null;
     this.changeDetector.detectChanges();
